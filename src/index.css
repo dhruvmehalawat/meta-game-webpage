@@ -118,7 +118,7 @@ body {
 }
 
 @utility animated-word {
-  @apply font-zentry font-black opacity-0;
+  @apply font-zentry font-black opacity-0 ;
 
   transform: translate3d(10px, 51px, -60px)
              rotateY(60deg)
@@ -126,7 +126,15 @@ body {
 
   transform-origin: 50% 50% -150px !important;
   will-change: opacity, transform;
+   animation: gradient-text 2.5s linear infinite;
 }
+
+@keyframes gradient-text {
+  to{
+    background-position: 200%;
+  }
+}
+
 
 @utility bento-tilt_1 {
   @apply border-hsla relative col-span-2 overflow-hidden rounded-md
@@ -325,3 +333,4 @@ body {
     opacity: 0.8;
   }
 }
+

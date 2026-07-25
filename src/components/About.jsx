@@ -35,9 +35,9 @@ const About = () => {
 
         <AnimatedTitle
           title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
-          containerClass="mt-5 !text-black text-center"
+          containerClass="mt-5 !text-black text-center "
+          isGradientcont
         />
-
         <div className="about-subtext">
           <p>The Game of Games begins—your life, now an epic MMORPG</p>
           <p className="text-gray-500">
@@ -46,10 +46,9 @@ const About = () => {
           </p>
         </div>
       </div>
-
       <div className="h-dvh w-screen" id="clip">
         <div className="mask-clip-path about-image">
-          <img
+            <img
             src="img/about.webp"
             alt="Background"
             className="absolute left-0 top-0 size-full object-cover"

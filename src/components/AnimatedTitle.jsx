@@ -1,11 +1,24 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import clsx from 'clsx';
 gsap.registerPlugin(ScrollTrigger);
 
-const AnimatedTitle = ({title, containerClass}) => {
+const AnimatedTitle = ({title, containerClass , isGradientcont}) => {
     const containerRef = useRef(null);
+    const gradientText = ("bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-sky-700 to-teal-600  bg-[length:200%]")
+    const [isGradient , setIsGradient] = useState("");
+   
+    useEffect(()=>{
+         if(containerRef.current){
+        if(isGradientcont){
+            setIsGradient(gradientText);
+        }
+        else{
+            setIsGradient("");
+        }
+    }
+    },[])
     useEffect(()=>{
        const clx = gsap.context(() =>{ const tl = gsap.timeline({
             scrollTrigger:{
@@ -32,7 +45,7 @@ const AnimatedTitle = ({title, containerClass}) => {
         {title.split("<br />").map((line,index) => (
             <div key={index} className=' flex-center max-w-full flex-wrap gap-2 px-10 md:px-3'>
                 {line.split(" ").map((word, idx) =>(
-                    <span key={idx} className=' animated-word' dangerouslySetInnerHTML={{__html: word}}/>
+                    <span key={idx} className={clsx('animated-word' , isGradient)} dangerouslySetInnerHTML={{__html: word}}/>
                     ))}
             </div>
         ))}
